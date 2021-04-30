@@ -8,6 +8,11 @@ webhook = Webhook(app) # Defines '/postreceive' endpoint
 def hello_world():
     return "Hello, World!"
 
+
+@app.route("/payload")        # Standard Flask endpoint
+def hello_world():
+    return "Hello, World!"
+
 @webhook.hook()        # Defines a handler for the 'push' event
 def on_push(data):
     print(data)
