@@ -11,11 +11,10 @@ def hello_world():
     return "Hello, World!"
 
 
-@app.route("/payload")        # Standard Flask endpoint
+@app.route("/payload", methods=['POST'])        # Standard Flask endpoint
 def sipal():
-    if request.method == 'POST':
-        return "test"
-    return "test /payload"
+    result = request.form['push']
+    return result
 
 @webhook.hook()        # Defines a handler for the 'push' event
 def on_push(data):
