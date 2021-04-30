@@ -1,25 +1,21 @@
-from github_webhook import Webhook
 from flask import Flask
 from flask import request
 import json
 
 app = Flask(__name__)  # Standard Flask app
-webhook = Webhook(app) # Defines '/postreceive' endpoint
 
-@app.route("/",  methods=['POST'])        # Standard Flask endpoint
+@app.route("/")        # Standard Flask endpoint
 def hello_world():
-    return "Hello, World!"
+    return "Github webhook"
 
 
 @app.route("/payload", methods=['POST'])        # Standard Flask endpoint
-def sipal():
-    return "test"
+def webhook_receiver():
+    payload = request.get_json()  # dict object
+    print(payload)
+    print(type(payload))
+    return "push received"
 
-@webhook.hook()        # Defines a handler for the 'push' event
-def on_push(data):
-    print(data)
-    print("Got push with: {}".format(data))
-    return data
 
 
 if __name__ == "__main__":
