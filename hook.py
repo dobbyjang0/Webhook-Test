@@ -10,7 +10,7 @@ def hello_world():
 
 
 @app.route("/payload")        # Standard Flask endpoint
-def hello_world():
+def sipal():
     return "Hello, World!"
 
 @webhook.hook()        # Defines a handler for the 'push' event
