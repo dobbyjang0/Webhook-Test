@@ -1,7 +1,7 @@
 from github_webhook import Webhook
 from flask import Flask
 
-app = Flask("project alert")  # Standard Flask app
+app = Flask(__name__)  # Standard Flask app
 webhook = Webhook(app) # Defines '/postreceive' endpoint
 
 @app.route("/")        # Standard Flask endpoint
@@ -9,7 +9,7 @@ def hello_world():
     return "Hello, World!"
 
 
-@app.route("/payload")        # Standard Flask endpoint
+@app.route("/payload", methods=['POST'])        # Standard Flask endpoint
 def sipal():
     return "test /payload"
 
