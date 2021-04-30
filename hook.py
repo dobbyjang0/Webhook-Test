@@ -17,6 +17,7 @@ def sipal():
 def on_push(data):
     print(data)
     print("Got push with: {}".format(data))
+    return data
 
 
 if __name__ == "__main__":
