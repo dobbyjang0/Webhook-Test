@@ -6,15 +6,14 @@ import json
 app = Flask(__name__)  # Standard Flask app
 webhook = Webhook(app) # Defines '/postreceive' endpoint
 
-@app.route("/")        # Standard Flask endpoint
+@app.route("/",  methods=['POST'])        # Standard Flask endpoint
 def hello_world():
     return "Hello, World!"
 
 
 @app.route("/payload", methods=['POST'])        # Standard Flask endpoint
 def sipal():
-    result = request.form['push']
-    return result
+    return "test"
 
 @webhook.hook()        # Defines a handler for the 'push' event
 def on_push(data):
